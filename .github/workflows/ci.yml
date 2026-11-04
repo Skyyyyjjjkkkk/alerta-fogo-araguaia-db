@@ -1,0 +1,41 @@
+# Recria o banco do zero e executa os testes a cada push e pull request.
+name: CI do banco de dados
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  testar-banco:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: alerta
+          POSTGRES_PASSWORD: alerta
+          POSTGRES_DB: alerta_fogo
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U alerta"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      PGHOST: localhost
+      PGUSER: alerta
+      PGPASSWORD: alerta
+      PGDATABASE: alerta_fogo
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Criar esquema, carregar dados e executar testes
+        run: ./scripts/run_all.sh
+
+      - name: Executar consultas de exemplo
+        run: psql -X -v ON_ERROR_STOP=1 -f sql/consultas/consultas.sql
