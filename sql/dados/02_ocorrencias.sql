@@ -37,7 +37,9 @@ INSERT INTO ocorrencia (id_ocorrencia, id_usuario, id_localidade, descricao,
     (11, 11, 4, 'Fumaça escura saindo da mata perto da ponte da vicinal norte.',
          -11.877000, -51.469500, '2026-10-05 09:10-04', '2026-10-05 09:15-04'),
     (12, 13, 7, 'Teste de envio do aplicativo, registro feito por engano.',
-         -11.921000, -51.619000, '2026-10-08 20:00-04', '2026-10-08 20:01-04');
+         -11.921000, -51.619000, '2026-10-08 20:00-04', '2026-10-08 20:01-04'),
+    (13,  7, 5, 'Fumaça branca e cheiro de queimado perto da cabeceira do córrego.',
+         -12.101200, -51.551800, '2026-10-14 17:30-04', '2026-10-14 17:34-04');
 
 -- 2) Validações e descartes por agentes públicos (RF06) -----------------------
 UPDATE ocorrencia SET status = 'VALIDADA', gravidade = 3, id_validador = 2, validada_em = '2026-08-03 15:40-04' WHERE id_ocorrencia = 1;
