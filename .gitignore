@@ -1,0 +1,18 @@
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Arquivos locais de banco e credenciais (nunca versionar)
+.env
+*.env
+*.dump
+*.backup
+pgpass
+.pgpass
+
+# Saídas geradas localmente
+*.log
+saidas/
