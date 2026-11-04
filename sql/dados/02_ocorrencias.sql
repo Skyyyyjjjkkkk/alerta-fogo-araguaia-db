@@ -124,7 +124,11 @@ INSERT INTO foco_satelite (id_localidade, data_hora, latitude, longitude, sateli
     (NULL, '2026-10-07 13:45-04', -12.300000, -51.800000, 'NPP-375',   31.70);
 
 -- Ajuste das sequências após a carga com IDs explícitos.
-SELECT setval(pg_get_serial_sequence('alerta_fogo.ocorrencia',  'id_ocorrencia'),  (SELECT max(id_ocorrencia)  FROM ocorrencia));
-SELECT setval(pg_get_serial_sequence('alerta_fogo.foto',        'id_foto'),        (SELECT max(id_foto)        FROM foto));
-SELECT setval(pg_get_serial_sequence('alerta_fogo.atendimento', 'id_atendimento'), (SELECT max(id_atendimento) FROM atendimento));
-SELECT setval(pg_get_serial_sequence('alerta_fogo.alerta',      'id_alerta'),      (SELECT max(id_alerta)      FROM alerta));
+DO $$
+BEGIN
+    PERFORM setval(pg_get_serial_sequence('alerta_fogo.ocorrencia',  'id_ocorrencia'),  (SELECT max(id_ocorrencia)  FROM ocorrencia));
+    PERFORM setval(pg_get_serial_sequence('alerta_fogo.foto',        'id_foto'),        (SELECT max(id_foto)        FROM foto));
+    PERFORM setval(pg_get_serial_sequence('alerta_fogo.atendimento', 'id_atendimento'), (SELECT max(id_atendimento) FROM atendimento));
+    PERFORM setval(pg_get_serial_sequence('alerta_fogo.alerta',      'id_alerta'),      (SELECT max(id_alerta)      FROM alerta));
+END;
+$$;

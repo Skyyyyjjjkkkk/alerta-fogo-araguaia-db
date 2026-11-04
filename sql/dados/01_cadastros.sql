@@ -57,6 +57,10 @@ INSERT INTO usuario (id_usuario, id_orgao, nome, email, telefone, senha_hash, pe
 
 -- Os IDs foram informados explicitamente para facilitar a leitura dos testes;
 -- as sequências de identidade são ajustadas para continuar a partir do maior ID.
-SELECT setval(pg_get_serial_sequence('alerta_fogo.orgao',      'id_orgao'),      (SELECT max(id_orgao)      FROM orgao));
-SELECT setval(pg_get_serial_sequence('alerta_fogo.localidade', 'id_localidade'), (SELECT max(id_localidade) FROM localidade));
-SELECT setval(pg_get_serial_sequence('alerta_fogo.usuario',    'id_usuario'),    (SELECT max(id_usuario)    FROM usuario));
+DO $$
+BEGIN
+    PERFORM setval(pg_get_serial_sequence('alerta_fogo.orgao',      'id_orgao'),      (SELECT max(id_orgao)      FROM orgao));
+    PERFORM setval(pg_get_serial_sequence('alerta_fogo.localidade', 'id_localidade'), (SELECT max(id_localidade) FROM localidade));
+    PERFORM setval(pg_get_serial_sequence('alerta_fogo.usuario',    'id_usuario'),    (SELECT max(id_usuario)    FROM usuario));
+END;
+$$;
