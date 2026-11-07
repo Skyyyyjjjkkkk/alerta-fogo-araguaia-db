@@ -86,7 +86,7 @@ INSERT INTO atendimento (id_atendimento, id_ocorrencia, id_orgao, id_responsavel
     (4, 3, 2, 3, '2026-08-16 08:30-04', '2026-08-16 10:00-04', 'Fogo extinto; proprietário notificado para limpeza do terreno.'),
     (5, 5, 4, 4, '2026-09-01 13:50-04', '2026-09-02 02:15-04', 'Combate noturno com apoio de caminhão-pipa da prefeitura.'),
     (6, 6, 5, 6, '2026-09-05 16:40-04', NULL,                  'Brigada em campo; foco controlado, aguardando rescaldo.'),
-    (7, 7, 3, 5, '2026-09-12 11:20-04', NULL,                  'Defesa Civil isolou a área e acionou os bombeiros.');
+    (7, 7, 3, 5, '2026-09-12 11:20-04', NULL,                  'Defesa Civil isolou a área e acionou a brigada municipal.');
 
 -- 5) Encerramento das ocorrências com atendimento concluído (RN04) ------------
 UPDATE ocorrencia SET status = 'ENCERRADA' WHERE id_ocorrencia IN (1, 2, 3, 5);
@@ -94,7 +94,7 @@ UPDATE ocorrencia SET status = 'ENCERRADA' WHERE id_ocorrencia IN (1, 2, 3, 5);
 -- 6) Alertas emitidos (RF08, RN02) -------------------------------------------
 INSERT INTO alerta (id_alerta, id_localidade, id_emissor, id_ocorrencia, titulo, mensagem, nivel_risco, emitido_em) VALUES
     (1, 4, 2, 1,    'Incêndio ativo na Zona Rural Norte',
-        'Evite a estrada vicinal norte. Bombeiros em atuação. Não acenda fogo.', 'ALTO',     '2026-08-03 15:45-04'),
+        'Evite a estrada vicinal norte. Brigada em atuação. Não acenda fogo.', 'ALTO',     '2026-08-03 15:45-04'),
     (2, 7, 5, 5,    'Incêndio de grandes proporções no Ribeirão Bonito',
         'Moradores próximos à mata ciliar devem se afastar e manter portas fechadas.', 'CRITICO', '2026-09-01 13:30-04'),
     (3, 4, 2, 6,    'Reignição de foco na Zona Rural Norte',
