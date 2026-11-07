@@ -42,7 +42,7 @@ RETURNING id_alerta, id_localidade, id_ocorrencia, titulo, nivel_risco;
 -- U4 | RF07 - Abertura de atendimento para a ocorrência 9. O trigger de
 --      ATENDIMENTO altera a ocorrência de VALIDADA para EM_ATENDIMENTO.
 INSERT INTO atendimento (id_ocorrencia, id_orgao, id_responsavel, inicio, providencia)
-VALUES (9, 4, 4, '2026-09-28 15:00-04', 'Equipe de bombeiros deslocada com uma viatura e apoio da brigada.')
+VALUES (9, 4, 4, '2026-09-28 15:00-04', 'Equipe da brigada municipal deslocada com uma viatura e apoio da brigada comunitária.')
 RETURNING id_atendimento, id_ocorrencia, inicio;
 
 SELECT id_ocorrencia, status FROM ocorrencia WHERE id_ocorrencia = 9;
@@ -50,7 +50,7 @@ SELECT id_ocorrencia, status FROM ocorrencia WHERE id_ocorrencia = 9;
 -- U5 | RF07 e RN04 - Conclusão do atendimento da ocorrência 7 e encerramento.
 UPDATE atendimento
    SET fim         = '2026-09-12 17:40-04',
-       providencia = providencia || ' Bombeiros extinguiram o fogo às 17h40; nenhuma casa atingida.'
+       providencia = providencia || ' A brigada municipal extinguiu o fogo às 17h40; nenhuma casa atingida.'
  WHERE id_ocorrencia = 7
    AND fim IS NULL
 RETURNING id_atendimento, inicio, fim, fim - inicio AS duracao;

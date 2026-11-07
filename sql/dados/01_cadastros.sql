@@ -11,7 +11,7 @@ INSERT INTO orgao (id_orgao, nome, tipo, telefone, email) VALUES
     (1, 'Câmara Municipal de Bom Jesus do Araguaia',  'LEGISLATIVO',  '(66) 3000-0001', 'camara@exemplo.org'),
     (2, 'Secretaria Municipal de Meio Ambiente',      'AMBIENTAL',    '(66) 3000-0002', 'meioambiente@exemplo.org'),
     (3, 'Defesa Civil Municipal',                     'DEFESA_CIVIL', '(66) 3000-0003', 'defesacivil@exemplo.org'),
-    (4, 'Corpo de Bombeiros Militar de Mato Grosso',  'BOMBEIROS',    '193',            'bombeiros@exemplo.org'),
+    (4, 'Brigada Municipal de Combate a Incêndios',    'BRIGADA',      '(66) 3000-0004', 'brigada.municipal@exemplo.org'),
     (5, 'Brigada Comunitária do Araguaia',            'BRIGADA',      '(66) 99000-0005', NULL);
 
 INSERT INTO localidade (id_localidade, nome, tipo, latitude, longitude) VALUES
@@ -33,7 +33,7 @@ INSERT INTO usuario (id_usuario, id_orgao, nome, email, telefone, senha_hash, pe
     ( 3, 1,    'Ricardo Almeida',          'ricardo.almeida@exemplo.org','(66) 99100-0003',
       crypt('Teste@2026', gen_salt('bf', 8)), 'AGENTE_PUBLICO', 'Assessor legislativo',   'CM-0215', TRUE, '2026-07-21 09:10-04'),
     ( 4, 4,    'Paulo Ribeiro',            'paulo.ribeiro@exemplo.org',  '(66) 99100-0004',
-      crypt('Teste@2026', gen_salt('bf', 8)), 'AGENTE_PUBLICO', 'Sargento BM',            'BM-4471', TRUE, '2026-07-22 10:00-04'),
+      crypt('Teste@2026', gen_salt('bf', 8)), 'AGENTE_PUBLICO', 'Chefe de brigada',       'BR-0004', TRUE, '2026-07-22 10:00-04'),
     ( 5, 3,    'Luciana Ferreira',         'luciana.ferreira@exemplo.org','(66) 99100-0005',
       crypt('Teste@2026', gen_salt('bf', 8)), 'AGENTE_PUBLICO', 'Coordenadora de Defesa Civil', 'DC-0007', TRUE, '2026-07-22 10:30-04'),
     ( 6, 5,    'Joana Pereira',            'joana.pereira@exemplo.org',  '(66) 99100-0006',
